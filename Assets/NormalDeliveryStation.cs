@@ -14,7 +14,19 @@ namespace Stations {
             {
                 Priority questPriority = (Priority)Random.Range(0, 3);
                 Station station = (Station)Random.Range(0, 2);
-                if()
+                switch (questPriority)
+                {
+                    case Priority.Low:
+                        break;
+                    case Priority.Medium:
+                        break;
+                    case Priority.High:
+                        break;
+                    case Priority.VeryHigh:
+                        break;
+                    case Priority.Mayhem:
+                        break;
+                }
                 Tasks.Add(new Task(questPriority,station,));
             }
         }
