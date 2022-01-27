@@ -6,7 +6,7 @@ using Trains;
 public class Player : MonoBehaviour
 {
     Rigidbody rb;
- 
+  
    [SerializeField] PlayerConfig config;
     void Start()
     {

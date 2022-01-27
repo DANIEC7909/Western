@@ -24,7 +24,7 @@ namespace Trains
         private void FixedUpdate()
         {
             float actualForceType = Input.GetKey(KeyCode.Space) ? config.breakingForce : config.accelerationForce ;
-            Debug.Log("Actual ForceType " + actualForceType);
+          
             lspeed = Mathf.Lerp(lspeed, speed,Time.deltaTime* actualForceType);
            
             transform.position += Vector3.right *Time.deltaTime*  lspeed;
