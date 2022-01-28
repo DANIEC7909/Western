@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Trains;
 namespace Stations {
-    public class NormalDeliveryStation : MonoBehaviour
+    public class NormalDeliveryStation : MonoBehaviour,IInteractable
     {
-        public bool canInteract;
+        public bool canInteract,isInteracting;
         public List<Task> Tasks=new List<Task>();
         private void Start()
         {
@@ -37,6 +37,13 @@ namespace Stations {
                 Tasks.Add(new Task(questPriority,station,price));
             }
         }
+        private void Update()
+        {
+            if (isInteracting)
+            {
+
+            }
+        }
         private void OnTriggerStay(Collider other)
         {
             if (other.CompareTag("Train"))
@@ -49,5 +56,14 @@ namespace Stations {
             }
            
         }
+
+        public void Use(GameObject sender)
+        {
+            if (canInteract)
+            {
+                isInteracting = !isInteracting;
+            }
+        }
+
     } 
 }

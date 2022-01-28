@@ -75,6 +75,13 @@ public class Player : MonoBehaviour
         {
       
         }
+        if (other.CompareTag("Station"))
+        {
+            if (Input.GetButtonDown("Use"))
+            {
+                other.GetComponent<IInteractable>().Use(this.gameObject);
+            }
+        }
     }
  
 }
