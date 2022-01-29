@@ -36,6 +36,7 @@ namespace Stations {
 
                 Tasks.Add(new Task(questPriority,station,price));
             }
+            Debug.LogWarning("Generated " + Tasks.Count + " Tasks");
         }
         private void Update()
         {
