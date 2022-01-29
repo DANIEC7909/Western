@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Trains;
+using T3Z.UIController;
 namespace Stations {
     public class NormalDeliveryStation : MonoBehaviour,IInteractable
     {
@@ -50,7 +51,7 @@ namespace Stations {
             if (other.CompareTag("Train"))
             {
                 Debug.LogWarning("Welcome to station");
-                if (other.GetComponent<TrainControllerNonPhysics>().Handbrake)
+                if (other.transform.parent.GetComponentInParent<TrainControllerNonPhysics>().Handbrake)
                 {
                     canInteract = true;
                 }
@@ -64,6 +65,7 @@ namespace Stations {
             {
                 isInteracting = !isInteracting;
                 playerSender.UIStation.SetActive(isInteracting);
+                playerSender.UIStation.GetComponent<StationQuestUICotroller>().Init(Tasks);
             }
         }
 

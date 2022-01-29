@@ -12,14 +12,16 @@ namespace T3Z.UIController
         [SerializeField] Transform rootGameObject;
         [SerializeField] GameObject UIQuestRef;
         [SerializeField] Player player;
-        private void Init(List<Task> Tasks_)
+        public void Init(List<Task> Tasks_)
         {
             Tasks = Tasks_;
+            Debug.LogWarning("Loaded " + Tasks.Count + " Tasks");
         }
         private void Update()
         {
             if (Tasks != null)
             {
+                if(TasksGo.Count<Tasks.Count)
                 for (int i = 0; i < Tasks.Count; i++)
                 {
                    GameObject go= Instantiate(UIQuestRef, rootGameObject.transform);
@@ -29,7 +31,12 @@ namespace T3Z.UIController
                     TextMeshProUGUI price = go.transform.GetChild(5).GetComponent<TextMeshProUGUI>();
                     TextMeshProUGUI endstation = go.transform.GetChild(6).GetComponent<TextMeshProUGUI>();
                     QuestObject qo = go.GetComponent<QuestObject>();
-                    qo.id = i;
+                        name.text = "Quest number:"+i; 
+                        price.text = Tasks[i].price.ToString();
+                        endstation.text = Tasks[i].stationToPass.ToString();
+                        priority.text = Tasks[i].taskPriority.ToString();
+
+                        qo.id = i;
                     TasksGo.Add(go);
                 }
             }
