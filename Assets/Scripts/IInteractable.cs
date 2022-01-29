@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    public void Use(GameObject sender);
+    public void Use(object sender);
 
    
 }
