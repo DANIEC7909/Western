@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-namespace T3Z.UI
+namespace T3Z.UIController
 {
     public class StationQuestUICotroller : MonoBehaviour
     {
         public List<Task> Tasks = new List<Task>();
+        public List<GameObject> TasksGo = new List<GameObject>();
         [SerializeField] Transform rootGameObject;
         [SerializeField] GameObject UIQuestRef;
-
+        [SerializeField] Player player;
         private void Init(List<Task> Tasks_)
         {
             Tasks = Tasks_;
@@ -27,13 +28,16 @@ namespace T3Z.UI
                     TextMeshProUGUI priority=go.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
                     TextMeshProUGUI price = go.transform.GetChild(5).GetComponent<TextMeshProUGUI>();
                     TextMeshProUGUI endstation = go.transform.GetChild(6).GetComponent<TextMeshProUGUI>();
-                    Button bt= go.transform.GetChild(8).GetComponent<Button>();
-                  //  bt.onClick+=TakeQuest()//it should automatically assign id to button
-
+                    QuestObject qo = go.GetComponent<QuestObject>();
+                    qo.id = i;
+                    TasksGo.Add(go);
                 }
             }
         }
        public void TakeQuest(int id) {
+            player.PlayerTask.Add(Tasks[id]);
+            Destroy(TasksGo[id]);
+            TasksGo.Remove(TasksGo[id]);
         }
 
     }

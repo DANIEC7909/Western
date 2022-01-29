@@ -5,13 +5,13 @@ using Config;
 using Trains;
 public class Player : MonoBehaviour
 {
+    public static Player _player;
     Rigidbody rb;
-  
+    public List<Task> PlayerTask = new List<Task>();
    [SerializeField] PlayerConfig config;
-    void Start()
+    void Awake()
     {
-     
-        
+        _player = this;
     }
 
     void FixedUpdate()
