@@ -58,11 +58,12 @@ namespace Stations {
            
         }
 
-        public void Use(GameObject sender)
+        public void Use(Player playerSender)
         {
             if (canInteract)
             {
                 isInteracting = !isInteracting;
+                playerSender.UIStation.SetActive(isInteracting);
             }
         }
 

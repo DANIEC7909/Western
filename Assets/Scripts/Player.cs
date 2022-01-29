@@ -6,6 +6,9 @@ using Trains;
 public class Player : MonoBehaviour
 {
     public static Player _player;
+    #region
+    public GameObject UIStation;
+    #endregion
     Rigidbody rb;
     public List<Task> PlayerTask = new List<Task>();
    [SerializeField] PlayerConfig config;
@@ -79,7 +82,7 @@ public class Player : MonoBehaviour
         {
             if (Input.GetButtonDown("Use"))
             {
-                other.GetComponent<IInteractable>().Use(this.gameObject);
+                other.GetComponent<IInteractable>().Use(this);
             }
         }
     }
