@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd85fdba0e6a74b47985990dae7ab47d, type: 3}
+  m_Name: StationData
+  m_EditorClassIdentifier: 
+  MoneyBag: {fileID: 0}
+  AmountInLowPriority: 1
+  AmountInMediumPriority: 2
+  AmountInHighPriority: 4
+  AmountInVeryHighPriority: 6
+  AmountInMayhemPriority: 10

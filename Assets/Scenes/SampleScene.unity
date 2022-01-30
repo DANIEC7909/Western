@@ -213,11 +213,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5238820401998598406, guid: f2e0b7ae4dae8cf44955bccd3512b213, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.412834
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5238820401998598406, guid: f2e0b7ae4dae8cf44955bccd3512b213, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.4402974
+      value: 1.9999897
       objectReference: {fileID: 0}
     - target: {fileID: 5238820401998598406, guid: f2e0b7ae4dae8cf44955bccd3512b213, type: 3}
       propertyPath: m_LocalPosition.z
@@ -961,6 +961,7 @@ MonoBehaviour:
   rootGameObject: {fileID: 606410892}
   UIQuestRef: {fileID: 2792468291441337707, guid: a4f3e95fc18201d41900bed5635d4a13, type: 3}
   player: {fileID: 1967159876}
+  currentStation: {fileID: 0}
 --- !u!4 &842100881 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5239100585477912294, guid: f2e0b7ae4dae8cf44955bccd3512b213, type: 3}
@@ -1205,6 +1206,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canInteract: 0
   isInteracting: 0
+  stationConfig: {fileID: 0}
+  tSpawnPos: {fileID: 0}
 --- !u!65 &1141078993
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1351,6 +1354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIStation: {fileID: 0}
   config: {fileID: 11400000, guid: fe50d7c4aba534e4eb9d18ba80c61af1, type: 2}
+  CameraLookObj: {fileID: 0}
 --- !u!136 &1920690256
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1445,6 +1449,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1943114451 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5273061343101857912, guid: f2e0b7ae4dae8cf44955bccd3512b213, type: 3}
+  m_PrefabInstance: {fileID: 445451652}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec72980442fddac4d86e75ab24b4d027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1967159870 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5241267463746980526, guid: f2e0b7ae4dae8cf44955bccd3512b213, type: 3}
@@ -1499,6 +1514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIStation: {fileID: 749436944}
   config: {fileID: 11400000, guid: fe50d7c4aba534e4eb9d18ba80c61af1, type: 2}
+  CameraLookObj: {fileID: 1943114451}
 --- !u!114 &1967159877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1602,7 +1618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7775152132143067165, guid: 4697f33ca3a4279409f333d5d45a1ffe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.0460262
+      value: 27.35
       objectReference: {fileID: 0}
     - target: {fileID: 7775152132143067165, guid: 4697f33ca3a4279409f333d5d45a1ffe, type: 3}
       propertyPath: m_LocalPosition.y

@@ -78,6 +78,10 @@ namespace Stations {
                 Instantiate(go, tSpawnPos.position, Quaternion.identity);
             }
         }
+        /// <summary>
+        /// This func spawn Current Tresure in current amount
+        /// </summary>
+        /// <param name="task"></param>
         public void SpawnTresure(Task task) 
         {
             switch (task.cargoType)

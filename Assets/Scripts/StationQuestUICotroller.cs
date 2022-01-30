@@ -49,6 +49,7 @@ namespace T3Z.UIController
         }
        public void TakeQuest(int id) {
             player.PlayerTask.Add(Tasks[id]);
+            currentStation.SpawnTresure(Tasks[id]);
             Destroy(TasksGo[id]);
             TasksGo[id] = null;
         }
