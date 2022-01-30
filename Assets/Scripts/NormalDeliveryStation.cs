@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Trains;
 using T3Z.UIController;
+using Config;
 namespace Stations {
     public class NormalDeliveryStation : MonoBehaviour,IInteractable
     {
         public bool canInteract,isInteracting;
         public List<Task> Tasks=new List<Task>();
         private bool isStationInitializedInSQUIC;
-
+        public StationConfig stationConfig;
+        [SerializeField] Transform tSpawnPos;
         private void Start()
         {
             int iter = Random.Range(1, 5);
@@ -69,13 +71,46 @@ namespace Stations {
             }
            
         }
-
+        void spawnTresure(int i,GameObject go)
+        {
+            for(int ii = 0; ii < i; ii++)
+            {
+                Instantiate(go, tSpawnPos.position, Quaternion.identity);
+            }
+        }
+        public void SpawnTresure(Task task) 
+        {
+            switch (task.cargoType)
+            {
+                case CargoType.MoneyBags:
+                    switch (task.taskPriority)
+                    {
+                        case Priority.Low:
+                            spawnTresure(stationConfig.AmountInLowPriority, stationConfig.MoneyBag);
+                            break;
+                        case Priority.Medium:
+                            spawnTresure(stationConfig.AmountInMediumPriority, stationConfig.MoneyBag);
+                            break;
+                        case Priority.High:
+                            spawnTresure(stationConfig.AmountInHighPriority, stationConfig.MoneyBag);
+                            break;
+                        case Priority.VeryHigh:
+                            spawnTresure(stationConfig.AmountInVeryHighPriority, stationConfig.MoneyBag);
+                            break;
+                        case Priority.Mayhem:
+                            spawnTresure(stationConfig.AmountInMayhemPriority, stationConfig.MoneyBag);
+                            break;
+                    }
+                    break;
+            }
+        }
         public void Use(Player playerSender)
         {
             if (canInteract)
             {
                 isInteracting = !isInteracting;
                 playerSender.UIStation.SetActive(isInteracting);
+                playerSender.UIStation.GetComponent<StationQuestUICotroller>().currentStation = this;
                 if (isStationInitializedInSQUIC==false)
                 {
                     isStationInitializedInSQUIC = true;

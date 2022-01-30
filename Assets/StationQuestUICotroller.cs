@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Stations;
 namespace T3Z.UIController
 {
     public class StationQuestUICotroller : MonoBehaviour
@@ -12,6 +13,7 @@ namespace T3Z.UIController
         [SerializeField] Transform rootGameObject;
         [SerializeField] GameObject UIQuestRef;
         [SerializeField] Player player;
+        public  NormalDeliveryStation currentStation;
         bool generated=true;
         public void Init(List<Task> Tasks_)
         {
@@ -53,3 +55,4 @@ namespace T3Z.UIController
 
     }
 }
+
