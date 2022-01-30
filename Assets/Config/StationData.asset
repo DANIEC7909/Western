@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd85fdba0e6a74b47985990dae7ab47d, type: 3}
   m_Name: StationData
   m_EditorClassIdentifier: 
-  MoneyBag: {fileID: 0}
+  MoneyBag: {fileID: 2014219276143590854, guid: 98db61402ee3fbd4081beaed37d36fa5, type: 3}
   AmountInLowPriority: 1
   AmountInMediumPriority: 2
   AmountInHighPriority: 4
