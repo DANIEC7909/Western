@@ -8,6 +8,8 @@ namespace Stations {
     {
         public bool canInteract,isInteracting;
         public List<Task> Tasks=new List<Task>();
+        private bool isStationInitializedInSQUIC;
+
         private void Start()
         {
             int iter = Random.Range(1, 5);
@@ -36,6 +38,9 @@ namespace Stations {
                 }
 
                 Tasks.Add(new Task(questPriority,station,price));
+                Debug.Log(Tasks[i].stationToPass);
+                Debug.Log(Tasks[i].taskPriority);
+                Debug.Log(Tasks[i].price);
             }
             Debug.LogWarning("Generated " + Tasks.Count + " Tasks");
         }
@@ -65,7 +70,11 @@ namespace Stations {
             {
                 isInteracting = !isInteracting;
                 playerSender.UIStation.SetActive(isInteracting);
-                playerSender.UIStation.GetComponent<StationQuestUICotroller>().Init(Tasks);
+                if (isStationInitializedInSQUIC==false)
+                {
+                    isStationInitializedInSQUIC = true;
+                    playerSender.UIStation.GetComponent<StationQuestUICotroller>().Init(Tasks);
+                }
             }
         }
 

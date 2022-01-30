@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     Rigidbody rb;
     public List<Task> PlayerTask = new List<Task>();
    [SerializeField] PlayerConfig config;
+    [SerializeField] FirstPersonLook CameraLookObj;
     void Awake()
     {
         _player = this;
@@ -70,7 +71,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        
+        Debug.Log(PlayerTask.Count);
     }
     private void OnTriggerStay(Collider other)
     {
@@ -83,6 +84,17 @@ public class Player : MonoBehaviour
             if (Input.GetButtonDown("Use"))
             {
                 other.GetComponent<IInteractable>().Use(this);
+                CameraLookObj.enabled = !CameraLookObj.enabled;
+                if (CameraLookObj.enabled)
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = true;
+                }
+                else
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = false;
+                }
             }
         }
     }

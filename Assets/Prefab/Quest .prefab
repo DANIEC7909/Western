@@ -99,6 +99,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   uICotroller: {fileID: 0}
+  name: {fileID: 963133793629160849}
+  priority: {fileID: 7015556895874749225}
+  price: {fileID: 1518496980783917339}
+  endstation: {fileID: 8524230708347538778}
 --- !u!1 &3551016773205941070
 GameObject:
   m_ObjectHideFlags: 0

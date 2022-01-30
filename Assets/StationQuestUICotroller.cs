@@ -7,44 +7,48 @@ namespace T3Z.UIController
 {
     public class StationQuestUICotroller : MonoBehaviour
     {
-        public List<Task> Tasks = new List<Task>();
-        public List<GameObject> TasksGo = new List<GameObject>();
+        public Task[] Tasks;
+        public GameObject[] TasksGo;
         [SerializeField] Transform rootGameObject;
         [SerializeField] GameObject UIQuestRef;
         [SerializeField] Player player;
+        bool generated=true;
         public void Init(List<Task> Tasks_)
         {
-            Tasks = Tasks_;
-            Debug.LogWarning("Loaded " + Tasks.Count + " Tasks");
+            Tasks = Tasks_.ToArray();
+            Debug.LogWarning("Loaded " + Tasks.Length + " Tasks");
         }
         private void Update()
         {
             if (Tasks != null)
             {
-                if(TasksGo.Count<Tasks.Count)
-                for (int i = 0; i < Tasks.Count; i++)
+                if (generated)
                 {
-                   GameObject go= Instantiate(UIQuestRef, rootGameObject.transform);
-                    //1,3,5,7 .b8
-                    TextMeshProUGUI name =go.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-                    TextMeshProUGUI priority=go.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
-                    TextMeshProUGUI price = go.transform.GetChild(5).GetComponent<TextMeshProUGUI>();
-                    TextMeshProUGUI endstation = go.transform.GetChild(6).GetComponent<TextMeshProUGUI>();
-                    QuestObject qo = go.GetComponent<QuestObject>();
-                        name.text = "Quest number:"+i; 
-                        price.text = Tasks[i].price.ToString();
-                        endstation.text = Tasks[i].stationToPass.ToString();
-                        priority.text = Tasks[i].taskPriority.ToString();
+                    List<GameObject> questsobj=new List<GameObject>();
+                    if (TasksGo.Length < Tasks.Length)
+                        for (int i = 0; i < Tasks.Length; i++)
+                        {
+                            GameObject go = Instantiate(UIQuestRef, rootGameObject.transform);
 
-                        qo.id = i;
-                    TasksGo.Add(go);
+                            QuestObject qo = go.GetComponent<QuestObject>();
+                            TasksGo = new GameObject[Tasks.Length];
+                            qo.name.text = "Quest number:" + i;
+                            qo.price.text = Tasks[i].price.ToString();
+                            qo.endstation.text = Tasks[i].stationToPass.ToString();
+                            qo.priority.text = Tasks[i].taskPriority.ToString();
+                            qo.uICotroller = this;
+                            qo.id = i;
+                            questsobj.Add(go);
+                        }
+                    TasksGo = questsobj.ToArray();
+                    generated = false;
                 }
             }
         }
        public void TakeQuest(int id) {
             player.PlayerTask.Add(Tasks[id]);
             Destroy(TasksGo[id]);
-            TasksGo.Remove(TasksGo[id]);
+            TasksGo[id] = null;
         }
 
     }
