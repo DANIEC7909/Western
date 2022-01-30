@@ -17,27 +17,33 @@ namespace Stations {
             {
                 Priority questPriority = (Priority)Random.Range(0, 3);
                 Station station = (Station)Random.Range(0, 2);
+                CargoType cargoType=CargoType.None;
                 int price = 0;
                 switch (questPriority)
                 {
                     case Priority.Low:
                         price = Random.Range(50, 100);
+                        cargoType = CargoType.MoneyBags;//Random MB and something else 
                         break;
                     case Priority.Medium:
                         price = Random.Range(160, 250);
+                        cargoType = CargoType.MoneyBags;//temp
                         break;
                     case Priority.High:
                         price = Random.Range(250, 390);
+                        cargoType = CargoType.MoneyBags;//temp
                         break;
                     case Priority.VeryHigh:
                         price = Random.Range(390, 550);
+                        cargoType = CargoType.MoneyBags;//temp
                         break;
                     case Priority.Mayhem:
                         price = Random.Range(550, 700);
+                        cargoType = CargoType.MoneyBags;//temp
                         break;
                 }
 
-                Tasks.Add(new Task(questPriority,station,price));
+                Tasks.Add(new Task(questPriority,station,price,cargoType));
                 Debug.Log(Tasks[i].stationToPass);
                 Debug.Log(Tasks[i].taskPriority);
                 Debug.Log(Tasks[i].price);
