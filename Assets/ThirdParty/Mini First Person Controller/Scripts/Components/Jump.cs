@@ -24,7 +24,7 @@ public class Jump : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!Trains.TrainControllerNonPhysics.isMounted)
+        if (!Trains.TrainControllerNonPhysics._IsMounted)
         {
             // Jump when the Jump button is pressed and we are on the ground.
             if (Input.GetButtonDown("Jump") && (!groundCheck || groundCheck.isGrounded))

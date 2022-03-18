@@ -8,8 +8,11 @@ namespace Trains
         [SerializeField] TrainConfig config;
         Rigidbody rb;
         [SerializeField] float speed;
+        /// <summary>
+        /// This Variable is a multiplier of train speed.
+        /// </summary>
         [SerializeField] float lspeed;
-        public static bool isMounted;
+        public static bool _IsMounted;
 
         [SerializeField] bool isPlayerIsOnTheTrain;
         public bool Handbrake;
@@ -17,7 +20,7 @@ namespace Trains
         void Start()
         {
             rb = GetComponent<Rigidbody>();
-            //  speed = config.speed;
+    
         }
         private void FixedUpdate()
         {
@@ -30,12 +33,11 @@ namespace Trains
 
         void Update()
         {
-
             if (isPlayerIsOnTheTrain)
             {
                 if (Input.GetKeyDown(KeyCode.M))
                 {
-                    isMounted = !isMounted;
+                    _IsMounted = !_IsMounted;
                 }
             }
 
@@ -44,7 +46,7 @@ namespace Trains
                 lspeed = speed = 0;
             }
 
-            if (isMounted)
+            if (_IsMounted)
             {
                 if (speed < 1)
                 {
@@ -86,7 +88,7 @@ namespace Trains
             {
                 other.transform.parent = null;
                 isPlayerIsOnTheTrain = false;
-                isMounted = false;
+                _IsMounted = false;
             }
         }
     }

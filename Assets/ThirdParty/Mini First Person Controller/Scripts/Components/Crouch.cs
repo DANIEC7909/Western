@@ -36,7 +36,7 @@ public class Crouch : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!Trains.TrainControllerNonPhysics.isMounted)
+        if (!Trains.TrainControllerNonPhysics._IsMounted)
         {
             if (Input.GetKey(key))
             {

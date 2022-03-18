@@ -25,7 +25,7 @@ public class FirstPersonMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!Trains.TrainControllerNonPhysics.isMounted)
+        if (!Trains.TrainControllerNonPhysics._IsMounted)
         {
             // Update IsRunning from input.
             IsRunning = canRun && Input.GetKey(runningKey);
