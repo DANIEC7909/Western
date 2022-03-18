@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Tresure : MonoBehaviour
 {
     public int TresureCount;
     public int hp;
-    public enum Type { Draggable,Loose,Liquid}
+    public enum Type { Draggable, Loose, Liquid }
     public Type TransportType;
-    public enum Importance {Low,Medium,Hight,VeryHight}
+    public enum Importance { Low, Medium, Hight, VeryHight }
     public Importance CargoImportance;
 }

@@ -1451,6 +1451,7 @@ MonoBehaviour:
   UIStation: {fileID: 0}
   config: {fileID: 11400000, guid: fe50d7c4aba534e4eb9d18ba80c61af1, type: 2}
   CameraLookObj: {fileID: 0}
+  hand: {fileID: 0}
 --- !u!136 &1920690256
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1545,53 +1546,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!1 &1943114450 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5242010300582068122, guid: f2e0b7ae4dae8cf44955bccd3512b213, type: 3}
-  m_PrefabInstance: {fileID: 445451652}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1943114451 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5273061343101857912, guid: f2e0b7ae4dae8cf44955bccd3512b213, type: 3}
   m_PrefabInstance: {fileID: 445451652}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943114450}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec72980442fddac4d86e75ab24b4d027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!138 &1943114452
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943114450}
-  m_ConnectedBody: {fileID: 0}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
---- !u!54 &1943114453
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943114450}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1967159870 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5241267463746980526, guid: f2e0b7ae4dae8cf44955bccd3512b213, type: 3}
@@ -1647,6 +1612,7 @@ MonoBehaviour:
   UIStation: {fileID: 749436944}
   config: {fileID: 11400000, guid: fe50d7c4aba534e4eb9d18ba80c61af1, type: 2}
   CameraLookObj: {fileID: 1943114451}
+  hand: {fileID: 0}
 --- !u!114 &1967159877
 MonoBehaviour:
   m_ObjectHideFlags: 0

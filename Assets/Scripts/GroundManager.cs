@@ -1,22 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Config;
+using UnityEngine;
 public class GroundManager : MonoBehaviour
 {
-    [SerializeField]  GroundConfig gconfig;
+    [SerializeField] GroundConfig gconfig;
     [SerializeField] static GroundConfig sgconfig;
     GameObject player;
     [SerializeField] GameObject startTile;
-  static int addDist = 100;
+    static int addDist = 100;
     [SerializeField] Vector3 apos => pos;
-  static  Vector3 pos;
+    static Vector3 pos;
     private void Start()
     {
         sgconfig = gconfig;
-      //  localtiles.Add(startTile);
+        //  localtiles.Add(startTile);
         player = GameObject.FindGameObjectWithTag("Player");//prawdopodobnie bêdê musia³ to zminiæ na identyfikator sieciowy gracza
-        for (int i =0;i<6;i++)
+        for (int i = 0; i < 6; i++)
         {
             spawn();
         }
@@ -35,9 +33,9 @@ public class GroundManager : MonoBehaviour
         {
             spawn();
         }
-      
+
     }
 
-   
-    
+
+
 }

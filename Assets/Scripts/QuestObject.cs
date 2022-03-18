@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using T3Z.UIController;
 using TMPro;
+using UnityEngine;
 
 public class QuestObject : MonoBehaviour
 {
@@ -10,15 +8,15 @@ public class QuestObject : MonoBehaviour
     [HideInInspector]
     public StationQuestUICotroller uICotroller;
     public Task thisQust;
-   public  TextMeshProUGUI name  ;
-   public  TextMeshProUGUI priority  ;
-   public  TextMeshProUGUI price ;
-    public TextMeshProUGUI endstation  ;
- 
-    public void AssignQuest ()
-        {
+    public TextMeshProUGUI name;
+    public TextMeshProUGUI priority;
+    public TextMeshProUGUI price;
+    public TextMeshProUGUI endstation;
+
+    public void AssignQuest()
+    {
         uICotroller.TakeQuest(id);
-        }
+    }
 
 
 }

@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-namespace Config {
+namespace Config
+{
     [CreateAssetMenu(fileName = "StationData", menuName = "Configs/Station", order = 1)]
     public class StationConfig : ScriptableObject
     {

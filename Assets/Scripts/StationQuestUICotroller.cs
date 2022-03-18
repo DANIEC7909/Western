@@ -1,9 +1,6 @@
-using System.Collections;
+using Stations;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
-using Stations;
 namespace T3Z.UIController
 {
     public class StationQuestUICotroller : MonoBehaviour
@@ -13,8 +10,8 @@ namespace T3Z.UIController
         [SerializeField] Transform rootGameObject;
         [SerializeField] GameObject UIQuestRef;
         [SerializeField] Player player;
-        public  NormalDeliveryStation currentStation;
-        bool generated=true;
+        public NormalDeliveryStation currentStation;
+        bool generated = true;
         public void Init(List<Task> Tasks_)
         {
             Tasks = Tasks_.ToArray();
@@ -26,7 +23,7 @@ namespace T3Z.UIController
             {
                 if (generated)
                 {
-                    List<GameObject> questsobj=new List<GameObject>();
+                    List<GameObject> questsobj = new List<GameObject>();
                     if (TasksGo.Length < Tasks.Length)
                         for (int i = 0; i < Tasks.Length; i++)
                         {
@@ -47,7 +44,8 @@ namespace T3Z.UIController
                 }
             }
         }
-       public void TakeQuest(int id) {
+        public void TakeQuest(int id)
+        {
             player.PlayerTask.Add(Tasks[id]);
             currentStation.SpawnTresure(Tasks[id]);
             Destroy(TasksGo[id]);

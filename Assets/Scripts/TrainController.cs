@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Config;
+using UnityEngine;
 namespace Trains
 {
     public class TrainController : MonoBehaviour
@@ -11,8 +9,8 @@ namespace Trains
         Rigidbody rb;
         [SerializeField] float speed;
         public static bool isMounted;
-     
-        [SerializeField]bool isPlayerIsOnTheTrain, Handbrake;
+
+        [SerializeField] bool isPlayerIsOnTheTrain, Handbrake;
 
         void Start()
         {
@@ -33,24 +31,24 @@ namespace Trains
                     isMounted = !isMounted;
                 }
             }
-             else
+            else
             {
-                    isMounted = false;
-                }
+                isMounted = false;
+            }
 
 
-                if (Handbrake)
-                {
-                    rb.constraints = RigidbodyConstraints.FreezePositionX |RigidbodyConstraints.FreezePositionZ|RigidbodyConstraints.FreezePositionY|RigidbodyConstraints.FreezeRotationY|RigidbodyConstraints.FreezeRotationX|RigidbodyConstraints.FreezeRotationZ;
-                }
-                else
-                {
-                    rb.constraints = ~RigidbodyConstraints.FreezePositionX;
-                }
+            if (Handbrake)
+            {
+                rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+            }
+            else
+            {
+                rb.constraints = ~RigidbodyConstraints.FreezePositionX;
+            }
 
-                if (isMounted)
-                {
-                    Debug.Log("Player Mounted into Train");
+            if (isMounted)
+            {
+                Debug.Log("Player Mounted into Train");
                 if (speed >= 0 && speed < 0.5f)
                 {
                     if (Input.GetKeyDown(KeyCode.B))
@@ -58,35 +56,35 @@ namespace Trains
                         Handbrake = !Handbrake;
                     }
                 }
+                if (Input.GetKey(KeyCode.W))
+                {
+                    speed = Mathf.SmoothStep(speed, config.speed, Time.deltaTime);
+                }
+                if (Input.GetKey(KeyCode.S))
+                {
+                    speed = Mathf.SmoothStep(speed, 0, Time.deltaTime);
+                }
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
                     if (Input.GetKey(KeyCode.W))
                     {
-                        speed = Mathf.SmoothStep(speed, config.speed, Time.deltaTime);
+                        speed = Mathf.SmoothStep(speed, config.speed, Time.deltaTime * config.accelerationForce);
                     }
                     if (Input.GetKey(KeyCode.S))
                     {
-                        speed = Mathf.SmoothStep(speed, 0, Time.deltaTime);
-                    }
-                    if (Input.GetKey(KeyCode.LeftShift))
-                    {
-                        if (Input.GetKey(KeyCode.W))
-                        {
-                            speed = Mathf.SmoothStep(speed, config.speed, Time.deltaTime * config.accelerationForce);
-                        }
-                        if (Input.GetKey(KeyCode.S))
-                        {
-                            speed = Mathf.SmoothStep(speed, -config.speed, Time.deltaTime * config.breakingForce);
-                        }
-                    }
-                    if (Input.GetKey(KeyCode.Space))
-                    {
-                        rb.drag = 5;
-                        speed = 0;
-                    }
-                    else
-                    {
-                        rb.drag = 0;
+                        speed = Mathf.SmoothStep(speed, -config.speed, Time.deltaTime * config.breakingForce);
                     }
                 }
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    rb.drag = 5;
+                    speed = 0;
+                }
+                else
+                {
+                    rb.drag = 0;
+                }
+            }
         }
         private void OnTriggerStay(Collider other)
         {

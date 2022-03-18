@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using Config;
 using Trains;
+using UnityEngine;
 public class Player : MonoBehaviour
 {
     public static Player _player;
@@ -11,11 +9,14 @@ public class Player : MonoBehaviour
     #endregion
     Rigidbody rb;
     public List<Task> PlayerTask = new List<Task>();
-   [SerializeField] PlayerConfig config;
+    [SerializeField] PlayerConfig config;
     [SerializeField] FirstPersonLook CameraLookObj;
+    Camera camera;
+    public FixedJoint hand;
     void Awake()
     {
         _player = this;
+        camera = Camera.main;
     }
 
     void FixedUpdate()
@@ -24,7 +25,7 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-             
+
             }
             else
             {
@@ -32,7 +33,7 @@ public class Player : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.W))
             {
-            
+
             }
             else
             {
@@ -40,8 +41,8 @@ public class Player : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.S))
             {
-             
-             
+
+
             }
             else
             {
@@ -49,8 +50,8 @@ public class Player : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.A))
             {
-            
-              
+
+
             }
             else
             {
@@ -58,7 +59,7 @@ public class Player : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.D))
             {
-             
+
 
             }
             else
@@ -67,17 +68,34 @@ public class Player : MonoBehaviour
             }
         }
     }
-               
+
 
     void Update()
     {
         Debug.Log(PlayerTask.Count);
+        if (Input.GetButton("Fire1"))
+        {
+            RaycastHit hit;
+            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.GetComponent<Rigidbody>() != null)
+                {
+                    hand.connectedBody = hit.transform.GetComponent<Rigidbody>();
+                }
+            }
+        }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            hand.connectedBody = null;
+        }
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Train")||other.CompareTag("Wagon"))
+        if (other.CompareTag("Train") || other.CompareTag("Wagon"))
         {
-      
+
         }
         if (other.CompareTag("Station"))
         {
@@ -88,15 +106,15 @@ public class Player : MonoBehaviour
                 if (CameraLookObj.enabled)
                 {
                     Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = true;
+                    Cursor.visible = true;
                 }
                 else
                 {
                     Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = false;
+                    Cursor.visible = false;
                 }
             }
         }
     }
- 
+
 }

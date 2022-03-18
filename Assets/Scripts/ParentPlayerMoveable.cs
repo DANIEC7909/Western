@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ParentPlayerMoveable : MonoBehaviour
@@ -9,8 +7,8 @@ public class ParentPlayerMoveable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.transform.parent = transform;
-        
-      
+
+
         }
     }
     private void OnTriggerExit(Collider other)

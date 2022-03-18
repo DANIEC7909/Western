@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 namespace Config
 {
@@ -7,6 +5,6 @@ namespace Config
     public class GroundConfig : ScriptableObject
     {
         public GameObject[] Grounds;
-        public float distanceToClearTiles=200;//depends on how long is train and all wagonetas 
+        public float distanceToClearTiles = 200;//depends on how long is train and all wagonetas 
     }
 }

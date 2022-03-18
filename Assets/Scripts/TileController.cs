@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
-using UnityEngine;
 using Config;
+using UnityEngine;
 public class TileController : MonoBehaviour
 {
-  [SerializeField]  GroundConfig groundConfig;
+    [SerializeField] GroundConfig groundConfig;
     GameObject player;
-   [SerializeField] float distance;
+    [SerializeField] float distance;
     bool isEntered;
     void Start()
     {
